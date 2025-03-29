@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: CinfigMap
+metadata:
+  name: my-config
+data:
+  app_mode: aayush
+
+
+
+# app -> password -> 
+# secret ->
+password: aayush
+api_token: skills

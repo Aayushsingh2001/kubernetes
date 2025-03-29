@@ -1,0 +1,39 @@
+1. Rolling Out changes (updating a deployment)
+------------------------------------------------
+- To apply changes to a deployment (e.g. update an image or configuration)
+=> kubectl set image deployment/<deployment-name> <container-name>=<new-image>
+
+- Example:
+=> kubectl set image deployment/my-app my-app-container=my-app:v2
+
+- To view the rollout status deployment:
+=> kubectl rolling status deployment/<deployment-name>
+
+2. Checking rolling history:
+- To see the revision hiostory of the deployment:
+=> kubectl rollou history deployment/<deployment-name>
+
+- To view more details about a specific revision:
+=> kubectl rollout history deploymemt/<deploymemt-name> --revision=<revision-number>
+
+3. ROlling back changes (Reverting a deploymemt)
+- To rollback to the previous version of a deployment:
+=> kubectl rollout undo deployment/<deployment-name>
+
+- To rollback to a specific revision:
+=> kubectl rollout undo deployment/<deployment-name> --to-revision=<revision-number>
+
+4. Pause and resume a rollout
+-To pause a rollout (useful if you want to stop an automatic deployment in the middle)
+=> kubectl rollout pause deployment/<deployment-name>
+
+- To resume a paused rollout:
+=> kubectl rollout resume deployment/<deployment-name>
+
+5. Verifying Deployment rollout
+- You can use the following command to view the details of your deployment and their 
+=> kubectl get deployments
+
+6. Scalling the Deployment
+- Scalling up or down a deploymentcan also be part of the rollout process:
+=> kubectl scale deployment/<deployment-name> --replicas=<number-of-replicas>

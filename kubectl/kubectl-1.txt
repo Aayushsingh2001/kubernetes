@@ -1,0 +1,92 @@
+here some commonly used kubectl commands in kubernets:-
+-----------------------------------------------------------
+
+1. Create a pod:-
+-------------------
+=> kubectl run <pod-name> --image=<image-name>
+example:-
+=>kubectl run nginx --image=nginx
+
+2. Create a configMap:-
+--------------------------
+From literal value:
+=> kubectl create configmap <configmap-name> -from-literal=<key>=<value>
+example:-
+=> kubectl create configmap website --from-literal=name=aayush
+
+From a file:-
+=> kubrctl vreate configmap <configmap-name> --from-file=<file-path>
+example:-
+=> kubectl create configmap exam --from-file=aayush.txt
+
+3. Create a secret:-
+------------------------
+From literal value:-
+=> kubectl create secret generic <secret-name> --from-literal=<key>=<value>
+example:-
+=> kubectl create secret generic website --from-literal=username=admin --from-literal=password=secret
+
+From a file:-
+=> kubectl create secret generic <secret-name> --from-file=<file-name>
+example:-
+=> kubectl create secret generic exams --from-file=aayush.txt
+
+4. Create a deployment:-
+----------------------------
+=> kubectl create deployment <deployment-name> --image=<image-name>
+example:-
+=> kubectl create deployment nginx-deployment --image=nginx
+
+5. Scale a deployment:-
+----------------------------
+=> kubectl scale deployment <deployment-name> --replicas=<number-of-replicas>
+example:-
+=> kubectl scale deployment nginx-deployment --replicas=3
+
+6. Expose a deployment as a service:-
+-------------------------------------------
+=> kubectl scale deployment <deployment-name> --port=<port> --target-port=<port> --type=<service-type>
+example:-
+=> kubectl expose deployment nginx-deployment --port=80 --target-port=80 --type=clusterIP
+
+7. Update an image in a deployment:-
+---------------------------------------
+=> kubectl set image deployment/<deployment-name> <container-name>=<new-image>
+example:-
+=> kubectl set image deployment/nginx-deployment nginx=nginx:1.19.0
+
+8. Delete a resource:-
+--------------------------
+=> kubectl delete <resource-type> <resource-name>
+example:-
+=> kubectl delete pod nginx
+
+9. Get resiurce details:-
+----------------------------
+=> kubectl get <resource-type>
+example:-
+=> kubectl get pods
+
+10. Describe a resource:-
+---------------------------
+=> kubectl describe <resource-type> <resource-name>
+example:-
+=> kubectl describe pod nginx
+
+11. Apply a configuration from a file:-
+-----------------------------------------
+=> kubectl apply -f <file-path>
+example:-
+=> kubectl apply -f deployment.yaml
+
+12. Create a namespace:-
+-------------------------------
+=> kubectl create namespace <namespace-name>
+example:-
+=> kubectl create namespace dev
+
+13. Set a context for a namespace:-
+--------------------------------------
+=> kubectl config set-context --current --namespace=<namespace-name>
+example:-
+=> kubectl config set-context --current --namespace=dev

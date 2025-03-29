@@ -1,0 +1,15 @@
+apiVersion: apps/v1
+kind: Service
+metadata: 
+  name: nginx-service
+spec:
+  selector:
+    app: nginx
+  ports:
+   - protocol: TCP
+     port: 8080 #-> where the service will listen on.
+     targetPort: 80 #-> port that the service will forword to on the container
+  type: ClusterIP
+
+# svc object will go and look for pods that have app=my-app label.
+# my-service object will listen on port 80 and forword to port 80 on the container
